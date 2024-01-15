@@ -71,8 +71,9 @@ const ObjToVtt=(files)=>{
 //uploading vtt file
 app.post('/vttUpload',async(req,res)=>{
 
-  const{file,name}=req.body
-  const FinalPath="/uploads/vtt"+Date.now()+name+".vtt"
+  const{file}=req.body
+  console.log(file)
+  const FinalPath="/uploads/vtt"+Date.now()+".vtt"
   const pathName=path.join(__dirname,FinalPath)
   const vttString=ObjToVtt(file)
 

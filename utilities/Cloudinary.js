@@ -10,6 +10,7 @@ cloudinary.config({
 
 
 const uploadCloudinary= async(filepath)=>{
+    console.log(filepath)
 
     try {
         if(!filepath) return null
@@ -21,7 +22,7 @@ const uploadCloudinary= async(filepath)=>{
         return response.secure_url
     } catch (error) {
         console.log(error,"cloudinaryError")
-        fs.unlinkSync(filepath) //remove the locally saved temporary file
+       // fs.unlinkSync(filepath) //remove the locally saved temporary file
         return null
     }
 }
