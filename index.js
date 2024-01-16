@@ -63,6 +63,7 @@ const ObjToVtt=(files)=>{
   files.forEach((d)=>{
     v.add(stringToTime(d.start),stringToTime(d.end),d.caption)
   })
+  console.log(v.toString())
   return v.toString()
 }
 
@@ -72,7 +73,6 @@ const ObjToVtt=(files)=>{
 app.post('/vttUpload',async(req,res)=>{
 
   const{file}=req.body
-  console.log(file)
   const FinalPath="/uploads/vtt"+Date.now()+".vtt"
   const pathName=path.join(__dirname,FinalPath)
   const vttString=ObjToVtt(file)
@@ -80,7 +80,6 @@ app.post('/vttUpload',async(req,res)=>{
   if(vttString){
     fs.writeFile(pathName,vttString,(err)=>{
       if(err)throw err
-      console.log('File has been written successfully.');
     })
   
     try {
